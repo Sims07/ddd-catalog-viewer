@@ -105,7 +105,53 @@
      "d": 1
     }
    ]
-  }
+  },
+  "page": 16,
+  "summary": "Regroupe entités et objets valeur derrière une racine qui garantit la cohérence des invariants.",
+  "pShort": "Comment garantir la cohérence des modifications quand les objets sont reliés par des associations complexes ?",
+  "sShort": "Délimiter des aggregates avec une racine unique : l'extérieur ne référence que la racine, qui garantit les invariants.",
+  "tags": [
+   "#Cohérence",
+   "#Invariants",
+   "#Transaction",
+   "#Frontière"
+  ],
+  "neg": [
+   {
+    "t": "Aggregates trop gros",
+    "d": "Une frontière trop large concentre les verrous et dégrade la concurrence et les performances."
+   },
+   {
+    "t": "Cohérence à terme entre aggregates",
+    "d": "Les règles qui traversent plusieurs aggregates passent par des mises à jour asynchrones, plus difficiles à raisonner et à tester."
+   },
+   {
+    "t": "Frontières délicates à tracer",
+    "d": "Une frontière mal placée impose des références lourdes ou des transactions distribuées."
+   }
+  ],
+  "see": [
+   [
+    "entity",
+    "Entity"
+   ],
+   [
+    "value-object",
+    "Value Object"
+   ],
+   [
+    "repository",
+    "Repository"
+   ],
+   [
+    "domain-events",
+    "Domain Events"
+   ]
+  ],
+  "crew": [
+   "Aggregate Design Canvas",
+   "https://github.com/ddd-crew/aggregate-design-canvas"
+  ]
  },
  {
   "id": "anticorruption-layer",
@@ -179,7 +225,53 @@
      "l": "interface existante"
     }
    ]
-  }
+  },
+  "page": 34,
+  "summary": "Isole votre modèle d'un système amont en traduisant ses concepts dans une couche dédiée.",
+  "pShort": "Comment s'intégrer à un système amont au modèle hérité ou mal adapté sans déformer le sien ?",
+  "sShort": "Créer côté aval une couche isolante qui expose l'amont dans les termes de votre propre modèle de domaine.",
+  "tags": [
+   "#Intégration",
+   "#Legacy",
+   "#Traduction",
+   "#Amont-Aval"
+  ],
+  "neg": [
+   {
+    "t": "Coût de développement et de maintenance",
+    "d": "La couche est du code supplémentaire à écrire, tester et faire évoluer à chaque changement de l'amont."
+   },
+   {
+    "t": "Indirection à l'exécution",
+    "d": "Un niveau de traduction s'ajoute à chaque échange, avec un risque de perte de sens entre les deux modèles."
+   },
+   {
+    "t": "Couche fourre-tout",
+    "d": "Sans discipline, elle accumule de la logique métier qui devrait vivre dans le domaine."
+   }
+  ],
+  "see": [
+   [
+    "conformist",
+    "Conformist"
+   ],
+   [
+    "open-host-service",
+    "Open-host Service"
+   ],
+   [
+    "published-language",
+    "Published Language"
+   ],
+   [
+    "context-map",
+    "Context Map"
+   ]
+  ],
+  "crew": [
+   "DDD Crew Context Mapping",
+   "https://github.com/ddd-crew/context-mapping"
+  ]
  },
  {
   "id": "core-domain",
@@ -268,7 +360,53 @@
      "d": 1
     }
    ]
-  }
+  },
+  "page": 40,
+  "summary": "Concentre les meilleurs talents sur la partie du modèle qui fait la différence pour le métier.",
+  "pShort": "Comment garder visible l'essence du modèle quand tant de composants complexes sont tous nécessaires ?",
+  "sShort": "Définir un core domain, le distinguer du reste du modèle et du code, le garder petit et y affecter les meilleurs talents.",
+  "tags": [
+   "#Priorisation",
+   "#Différenciation",
+   "#Investissement",
+   "#Distillation"
+  ],
+  "neg": [
+   {
+    "t": "Arbitrage assumé",
+    "d": "Désigner le cœur revient à accepter que le reste reçoive moins d'investissement, ce qui peut créer des tensions."
+   },
+   {
+    "t": "Un cœur qui évolue",
+    "d": "Ce qui est cœur aujourd'hui peut devenir générique demain : la cartographie se révise régulièrement."
+   },
+   {
+    "t": "Sous-investissement ailleurs",
+    "d": "Un sous-domaine générique négligé peut devenir un point de fragilité ou de dette."
+   }
+  ],
+  "see": [
+   [
+    "generic-subdomains",
+    "Generic Subdomains"
+   ],
+   [
+    "domain-vision-statement",
+    "Domain Vision Statement"
+   ],
+   [
+    "highlighted-core",
+    "Highlighted Core"
+   ],
+   [
+    "segregated-core",
+    "Segregated Core"
+   ]
+  ],
+  "crew": [
+   "Core Domain Charts",
+   "https://github.com/ddd-crew/core-domain-charts"
+  ]
  },
  {
   "id": "bounded-context",
@@ -337,7 +475,44 @@
     }
    ],
    "e": []
-  }
+  },
+  "page": 2,
+  "summary": "Trace la frontière explicite à l'intérieur de laquelle un modèle donné est défini et applicable.",
+  "pShort": "Comment éviter que plusieurs modèles coexistants sur un même projet ne se mélangent et brouillent le logiciel ?",
+  "sShort": "Définir explicitement le contexte, en termes d'équipes, de code et de schémas de base, et y garantir la cohérence par l'intégration continue.",
+  "tags": [
+   "#Frontière",
+   "#Équipe",
+   "#Modèle"
+  ],
+  "neg": [
+   {
+    "t": "Découpage difficile à figer",
+    "d": "Trouver la bonne granularité de contexte demande souvent plusieurs itérations et n'est jamais définitivement figé."
+   },
+   {
+    "t": "Coût d'intégration entre contextes",
+    "d": "Plus il y a de contextes, plus il faut investir dans les traductions et la coordination entre équipes."
+   }
+  ],
+  "see": [
+   [
+    "ubiquitous-language",
+    "Ubiquitous Language"
+   ],
+   [
+    "context-map",
+    "Context Map"
+   ],
+   [
+    "continuous-integration",
+    "Continuous Integration"
+   ]
+  ],
+  "crew": [
+   "Bounded Context Canvas",
+   "https://github.com/ddd-crew/bounded-context-canvas"
+  ]
  },
  {
   "id": "ubiquitous-language",
@@ -416,7 +591,39 @@
      "l": "reflété"
     }
    ]
-  }
+  },
+  "page": 3,
+  "summary": "Fait du modèle l'ossature d'un langage commun à l'oral, à l'écrit et dans le code, au sein d'un contexte.",
+  "pShort": "Comment éviter que le vocabulaire du code s'éloigne de celui des discussions avec les experts métier ?",
+  "sShort": "Utiliser sans relâche le même langage, structuré autour du modèle, à l'oral, dans les diagrammes et dans le code.",
+  "tags": [
+   "#Langage commun",
+   "#Communication"
+  ],
+  "neg": [
+   {
+    "t": "Discipline permanente",
+    "d": "Le langage se dilue si l'équipe retombe dans le jargon technique ou dans des synonymes non alignés."
+   },
+   {
+    "t": "Un langage par contexte",
+    "d": "Le même mot peut avoir un sens différent d'un bounded context à l'autre, ce qui impose de le clarifier à chaque frontière."
+   }
+  ],
+  "see": [
+   [
+    "bounded-context",
+    "Bounded Context"
+   ],
+   [
+    "hands-on-modelers",
+    "Hands-on Modelers"
+   ],
+   [
+    "system-metaphor",
+    "System Metaphor"
+   ]
+  ]
  },
  {
   "id": "context-map",
@@ -487,7 +694,43 @@
      "d": 1
     }
    ]
-  }
+  },
+  "page": 29,
+  "summary": "Cartographie les modèles en jeu et leurs points de contact, avant de chercher à les transformer.",
+  "pShort": "Comment éviter que les autres équipes brouillent les frontières sans le savoir, faute de vue d'ensemble ?",
+  "sShort": "Identifier chaque bounded context et décrire ses relations avec les autres (traduction, partage, influence), en plusieurs petites cartes ciblées.",
+  "tags": [
+   "#Cartographie",
+   "#Relations d'équipes"
+  ],
+  "neg": [
+   {
+    "t": "Carte vite obsolète",
+    "d": "Sans mise à jour régulière, la carte ne reflète plus les relations réelles entre équipes et contextes."
+   },
+   {
+    "t": "Simplification excessive",
+    "d": "Une carte trop synthétique peut masquer des nuances importantes dans une relation (partiellement Conformist, partiellement ACL)."
+   }
+  ],
+  "see": [
+   [
+    "bounded-context",
+    "Bounded Context"
+   ],
+   [
+    "partnership",
+    "Partnership"
+   ],
+   [
+    "shared-kernel",
+    "Shared Kernel"
+   ]
+  ],
+  "crew": [
+   "DDD Crew Context Mapping",
+   "https://github.com/ddd-crew/context-mapping"
+  ]
  },
  {
   "id": "partnership",
@@ -546,7 +789,35 @@
      "l": "planning conjoint"
     }
    ]
-  }
+  },
+  "page": 30,
+  "summary": "Coordonne deux équipes mutuellement dépendantes par une planification et une intégration communes.",
+  "pShort": "Comment éviter que l'échec d'un des deux contextes mutuellement dépendants ne condamne les deux projets ?",
+  "sShort": "Forger un partenariat : planification coordonnée, intégration gérée conjointement, interfaces évoluées de concert.",
+  "tags": [
+   "#Mutually Dependent",
+   "#Coordination"
+  ],
+  "neg": [
+   {
+    "t": "Dépendance organisationnelle forte",
+    "d": "La relation exige une coordination permanente ; elle échoue si l'une des deux équipes change de priorités unilatéralement."
+   },
+   {
+    "t": "Coût de synchronisation",
+    "d": "Livrer des fonctionnalités interdépendantes dans la même version ralentit chaque équipe au rythme de l'autre."
+   }
+  ],
+  "see": [
+   [
+    "shared-kernel",
+    "Shared Kernel"
+   ],
+   [
+    "context-map",
+    "Context Map"
+   ]
+  ]
  },
  {
   "id": "shared-kernel",
@@ -615,7 +886,35 @@
      "b": "b"
     }
    ]
-  }
+  },
+  "page": 31,
+  "summary": "Partage un petit sous-ensemble explicite du modèle et du code entre deux équipes qui l'entretiennent ensemble.",
+  "pShort": "Comment tirer parti d'un modèle partagé sans que cette interdépendance intime ne le mine ?",
+  "sShort": "Désigner un petit sous-ensemble commun par une frontière explicite, non modifiable sans concertation, avec une intégration continue dédiée.",
+  "tags": [
+   "#Code partagé",
+   "#Concertation"
+  ],
+  "neg": [
+   {
+    "t": "Couplage fort assumé",
+    "d": "Toute modification du noyau partagé impacte les deux équipes, ce qui ralentit son évolution."
+   },
+   {
+    "t": "Périmètre à contenir",
+    "d": "Le noyau partagé tend à grossir avec le temps si les équipes ne résistent pas à y ajouter des raccourcis."
+   }
+  ],
+  "see": [
+   [
+    "partnership",
+    "Partnership"
+   ],
+   [
+    "published-language",
+    "Published Language"
+   ]
+  ]
  },
  {
   "id": "customer-supplier",
@@ -673,7 +972,35 @@
      "l": "besoins"
     }
    ]
-  }
+  },
+  "page": 32,
+  "summary": "Établit une relation client/fournisseur formelle entre un aval et un amont qui ne dépendent pas l'un de l'autre.",
+  "pShort": "Comment éviter que l'aval soit à la merci des priorités de l'amont dans une relation amont-aval ?",
+  "sShort": "Faire entrer les priorités de l'aval dans la planification amont, avec tâches négociées et tests d'acceptation communs en intégration continue.",
+  "tags": [
+   "#Amont-Aval",
+   "#Priorisation"
+  ],
+  "neg": [
+   {
+    "t": "Négociation permanente",
+    "d": "Le rapport de force entre équipes doit être arbitré régulièrement, ce qui demande un sponsor ou un processus clair."
+   },
+   {
+    "t": "Ne fonctionne pas sans pouvoir de négociation",
+    "d": "Si l'aval n'a aucun levier réel sur l'amont, la relation glisse vers un Conformist de fait."
+   }
+  ],
+  "see": [
+   [
+    "conformist",
+    "Conformist"
+   ],
+   [
+    "open-host-service",
+    "Open-host Service"
+   ]
+  ]
  },
  {
   "id": "conformist",
@@ -731,7 +1058,35 @@
      "l": "se conforme"
     }
    ]
-  }
+  },
+  "page": 33,
+  "summary": "Adhère servilement au modèle de l'amont plutôt que de le traduire, pour simplifier l'intégration.",
+  "pShort": "Comment avancer quand l'amont n'a aucune motivation à répondre aux besoins de l'aval ?",
+  "sShort": "Supprimer la traduction en adoptant le modèle amont tel quel : cela bride la conception aval mais simplifie l'intégration.",
+  "tags": [
+   "#Amont-Aval",
+   "#Simplicité imposée"
+  ],
+  "neg": [
+   {
+    "t": "Conception aval bridée",
+    "d": "Le modèle aval hérite des faiblesses et des choix du modèle amont, qu'il ne maîtrise pas."
+   },
+   {
+    "t": "Dépendance totale",
+    "d": "Un changement de l'amont s'impose à l'aval sans négociation possible."
+   }
+  ],
+  "see": [
+   [
+    "customer-supplier",
+    "Customer/Supplier Development"
+   ],
+   [
+    "anticorruption-layer",
+    "Anticorruption Layer"
+   ]
+  ]
  },
  {
   "id": "open-host-service",
@@ -814,7 +1169,39 @@
      "b": "c3"
     }
    ]
-  }
+  },
+  "page": 35,
+  "summary": "Expose le sous-système via un protocole ouvert, plutôt qu'un traducteur par intégrateur.",
+  "pShort": "Comment éviter qu'écrire un traducteur pour chaque système à intégrer n'engorge l'équipe ?",
+  "sShort": "Définir un protocole de services ouvert à tous les intégrateurs, enrichi selon les besoins, avec un traducteur ponctuel pour les cas idiosyncratiques.",
+  "tags": [
+   "#Protocole ouvert",
+   "#Intégration multiple"
+  ],
+  "neg": [
+   {
+    "t": "Conception d'API exigeante",
+    "d": "Concevoir un protocole assez générique pour de nombreux clients demande un effort de conception important."
+   },
+   {
+    "t": "Compromis entre clients",
+    "d": "Le protocole doit satisfaire des besoins clients variés, au risque de ne parfaitement convenir à aucun."
+   }
+  ],
+  "see": [
+   [
+    "published-language",
+    "Published Language"
+   ],
+   [
+    "conformist",
+    "Conformist"
+   ],
+   [
+    "anticorruption-layer",
+    "Anticorruption Layer"
+   ]
+  ]
  },
  {
   "id": "published-language",
@@ -884,7 +1271,35 @@
      "b": "b"
     }
    ]
-  }
+  },
+  "page": 36,
+  "summary": "Traduit via un langage partagé et documenté, plutôt que d'un modèle de domaine directement vers un autre.",
+  "pShort": "Comment éviter les risques d'une traduction directe entre deux modèles complexes, mal factorisés ou non documentés ?",
+  "sShort": "Utiliser un langage bien documenté comme medium commun, souvent combiné avec un Open-host Service (ex. iCalendar, vCard).",
+  "tags": [
+   "#Standard",
+   "#Interopérabilité"
+  ],
+  "neg": [
+   {
+    "t": "Rigidité du standard",
+    "d": "Un langage publié se fige une fois adopté par plusieurs parties, ce qui freine son évolution."
+   },
+   {
+    "t": "Décalage sémantique",
+    "d": "Traduire vers et depuis un langage générique peut perdre des nuances propres à chaque modèle de domaine."
+   }
+  ],
+  "see": [
+   [
+    "open-host-service",
+    "Open-host Service"
+   ],
+   [
+    "shared-kernel",
+    "Shared Kernel"
+   ]
+  ]
  },
  {
   "id": "separate-ways",
@@ -936,7 +1351,35 @@
     }
    ],
    "e": []
-  }
+  },
+  "page": 37,
+  "summary": "Déclare un bounded context sans aucune connexion avec les autres, quand l'intégration ne vaut pas son coût.",
+  "pShort": "Comment éviter le coût d'intégration quand deux ensembles de fonctionnalités n'ont rien de significatif à gagner à être reliés ?",
+  "sShort": "Ne créer aucune connexion et laisser les développeurs bâtir une solution simple et spécialisée dans ce petit périmètre.",
+  "tags": [
+   "#Indépendance",
+   "#Simplicité"
+  ],
+  "neg": [
+   {
+    "t": "Duplication possible",
+    "d": "Des fonctionnalités proches peuvent être réimplémentées indépendamment dans chaque contexte."
+   },
+   {
+    "t": "À réévaluer si les besoins évoluent",
+    "d": "Une absence de lien aujourd'hui peut devenir un manque si les deux contextes doivent finalement collaborer plus tard."
+   }
+  ],
+  "see": [
+   [
+    "bounded-context",
+    "Bounded Context"
+   ],
+   [
+    "context-map",
+    "Context Map"
+   ]
+  ]
  },
  {
   "id": "big-ball-of-mud",
@@ -1025,7 +1468,35 @@
      "d": 1
     }
    ]
-  }
+  },
+  "page": 38,
+  "summary": "Trace une frontière autour d'un système désordonné plutôt que d'y appliquer une modélisation qu'il ne mérite pas.",
+  "pShort": "Comment avancer quand certaines parties du système mélangent modèles et frontières incohérentes ?",
+  "sShort": "Déclarer la zone big ball of mud, ne pas y appliquer de modélisation sophistiquée, et surveiller sa tendance à s'étendre.",
+  "tags": [
+   "#Dette technique",
+   "#Démarcation"
+  ],
+  "neg": [
+   {
+    "t": "Ne résout rien en soi",
+    "d": "Nommer la zone ne l'assainit pas ; cela ne fait qu'éviter d'y perdre du temps de modélisation."
+   },
+   {
+    "t": "Risque de contamination",
+    "d": "Sans vigilance, le désordre peut s'étendre aux bounded contexts sains qui y sont connectés."
+   }
+  ],
+  "see": [
+   [
+    "context-map",
+    "Context Map"
+   ],
+   [
+    "segregated-core",
+    "Segregated Core"
+   ]
+  ]
  },
  {
   "id": "entity",
@@ -1068,7 +1539,39 @@
      "l": "même entité, attributs modifiés"
     }
    ]
-  }
+  },
+  "page": 11,
+  "summary": "Définit un objet par un fil d'identité stable, plutôt que par ses attributs à un instant donné.",
+  "pShort": "Comment garder la même identité pour un objet qui change de forme ou d'attributs dans le temps ?",
+  "sShort": "Centrer la classe sur la continuité du cycle de vie et définir explicitement ce que signifie « être le même ».",
+  "tags": [
+   "#Identité",
+   "#Cycle de vie"
+  ],
+  "neg": [
+   {
+    "t": "Fausse identité",
+    "d": "Un identifiant technique mal choisi (clé auto-incrémentée sans sens métier) peut ne pas correspondre à l'identité réelle du domaine."
+   },
+   {
+    "t": "Alourdissement inutile",
+    "d": "Donner une identité à un concept qui n'en a pas besoin ajoute de la complexité sans valeur : c'est le rôle du Value Object de l'éviter."
+   }
+  ],
+  "see": [
+   [
+    "value-object",
+    "Value Object"
+   ],
+   [
+    "aggregate",
+    "Aggregate"
+   ],
+   [
+    "repository",
+    "Repository"
+   ]
+  ]
  },
  {
   "id": "value-object",
@@ -1112,7 +1615,39 @@
      "d": 1
     }
    ]
-  }
+  },
+  "page": 12,
+  "summary": "Modélise ce qui ne compte que par ses attributs, immuable et sans identité.",
+  "pShort": "Comment éviter d'alourdir le système en donnant une identité à des objets qui n'en ont pas besoin ?",
+  "sShort": "Rendre l'objet immuable, sans identité, avec des opérations sans effet de bord et une égalité par valeur.",
+  "tags": [
+   "#Immutabilité",
+   "#Simplicité"
+  ],
+  "neg": [
+   {
+    "t": "Choix parfois ambigu",
+    "d": "La frontière entre entité et value object n'est pas toujours évidente et peut évoluer avec la compréhension du domaine."
+   },
+   {
+    "t": "Prolifération d'objets",
+    "d": "Un modèle riche en value objects crée davantage de petites classes à maintenir."
+   }
+  ],
+  "see": [
+   [
+    "entity",
+    "Entity"
+   ],
+   [
+    "side-effect-free-functions",
+    "Side-Effect-Free Functions"
+   ],
+   [
+    "closure-of-operations",
+    "Closure of Operations"
+   ]
+  ]
  },
  {
   "id": "domain-events",
@@ -1182,7 +1717,40 @@
      "l": "notifie"
     }
    ]
-  }
+  },
+  "page": 13,
+  "summary": "Capture l'activité du domaine sous forme d'événements immuables et horodatés.",
+  "pShort": "Comment expliquer comment le système en est arrivé à son état, surtout en système distribué ?",
+  "sShort": "Modéliser chaque changement significatif comme un objet immuable du domaine, propagé de façon asynchrone hors de l'aggregate.",
+  "tags": [
+   "#Événementiel",
+   "#Asynchrone",
+   "#Traçabilité"
+  ],
+  "neg": [
+   {
+    "t": "Complexité de l'asynchrone",
+    "d": "Gérer l'ordre, les doublons et les échecs de livraison des événements ajoute une couche de complexité opérationnelle."
+   },
+   {
+    "t": "Explosion du nombre de types",
+    "d": "Sans discipline, chaque petit changement peut générer un événement, diluant le sens métier des événements importants."
+   }
+  ],
+  "see": [
+   [
+    "aggregate",
+    "Aggregate"
+   ],
+   [
+    "services",
+    "Services"
+   ]
+  ],
+  "crew": [
+   "Domain Message Flow Modelling",
+   "https://github.com/ddd-crew/domain-message-flow-modelling"
+  ]
  },
  {
   "id": "repository",
@@ -1253,7 +1821,39 @@
      "l": "persiste"
     }
    ]
-  }
+  },
+  "page": 17,
+  "summary": "Donne l'illusion d'une collection en mémoire pour accéder aux racines d'aggregate.",
+  "pShort": "Comment éviter que des requêtes sans contrainte brisent l'encapsulation des aggregates ?",
+  "sShort": "Fournir, pour chaque type d'aggregate qui en a besoin, un service d'ajout/retrait/sélection qui encapsule le stockage.",
+  "tags": [
+   "#Persistance",
+   "#Encapsulation"
+  ],
+  "neg": [
+   {
+    "t": "Sur-généricité",
+    "d": "Un repository générique pour tous les aggregates peut masquer des besoins de requêtes spécifiques au métier."
+   },
+   {
+    "t": "Fuite de la couche stockage",
+    "d": "Des méthodes trop proches du SQL ou de l'ORM cassent l'illusion de collection et couplent le domaine à l'infrastructure."
+   }
+  ],
+  "see": [
+   [
+    "aggregate",
+    "Aggregate"
+   ],
+   [
+    "factories",
+    "Factories"
+   ],
+   [
+    "layered-architecture",
+    "Layered Architecture"
+   ]
+  ]
  },
  {
   "id": "continuous-integration",
@@ -1337,7 +1937,40 @@
      "b": "m"
     }
    ]
-  }
+  },
+  "page": 5,
+  "summary": "Fusionne fréquemment le code et exerce le langage commun pour empêcher le modèle de se fragmenter.",
+  "pShort": "Comment garder un modèle sain une fois plusieurs personnes à l'œuvre dans un même bounded context ?",
+  "sShort": "Fusionner tout le code très souvent, avec des tests automatisés, et exercer sans relâche le langage omniprésent.",
+  "tags": [
+   "#Intégration continue",
+   "#Tests",
+   "#Cohérence du modèle"
+  ],
+  "neg": [
+   {
+    "t": "Discipline d'équipe exigeante",
+    "d": "Sans fusions réellement fréquentes et des tests fiables, la fragmentation revient vite."
+   },
+   {
+    "t": "Ne remplace pas le découpage",
+    "d": "Un bounded context trop large fait de l'intégration continue un frein plutôt qu'un filet de sécurité."
+   }
+  ],
+  "see": [
+   [
+    "bounded-context",
+    "Bounded Context"
+   ],
+   [
+    "ubiquitous-language",
+    "Ubiquitous Language"
+   ],
+   [
+    "refactoring-toward-deeper-insight",
+    "Refactoring Toward Deeper Insight"
+   ]
+  ]
  },
  {
   "id": "model-driven-design",
@@ -1399,7 +2032,40 @@
      "d": 1
     }
    ]
-  }
+  },
+  "page": 6,
+  "summary": "Fait correspondre le code au modèle du domaine de façon littérale, dans les deux sens.",
+  "pShort": "Comment éviter qu'analyse et conception divergent au point de rendre le modèle sans valeur ?",
+  "sShort": "Concevoir le logiciel pour refléter le modèle littéralement, et retravailler le modèle grâce aux retours d'implémentation.",
+  "tags": [
+   "#Modèle",
+   "#Conception",
+   "#Boucle de retour"
+  ],
+  "neg": [
+   {
+    "t": "Exige une double compétence",
+    "d": "Il faut des développeurs capables de comprendre le domaine, pas seulement la technique."
+   },
+   {
+    "t": "Correspondance parfois coûteuse",
+    "d": "Refléter le modèle littéralement peut demander plus de code que des raccourcis techniques."
+   }
+  ],
+  "see": [
+   [
+    "hands-on-modelers",
+    "Hands-on Modelers"
+   ],
+   [
+    "ubiquitous-language",
+    "Ubiquitous Language"
+   ],
+   [
+    "layered-architecture",
+    "Layered Architecture"
+   ]
+  ]
  },
  {
   "id": "hands-on-modelers",
@@ -1478,7 +2144,36 @@
      "l": "dialogue"
     }
    ]
-  }
+  },
+  "page": 7,
+  "summary": "Fait toucher le code à toute personne qui contribue au modèle, sans modélisateurs isolés.",
+  "pShort": "Comment éviter que le modèle devienne théorique si ceux qui codent ne s'en sentent pas responsables ?",
+  "sShort": "Impliquer toute personne technique dans le code, et faire dialoguer chaque développeur avec les experts métier.",
+  "tags": [
+   "#Organisation",
+   "#Collaboration",
+   "#Équipe"
+  ],
+  "neg": [
+   {
+    "t": "Tension de rôles",
+    "d": "Certaines organisations séparent analystes et développeurs par culture ou par statut ; le changement peut s'y heurter."
+   },
+   {
+    "t": "Ne suffit pas seul",
+    "d": "Sans langage omniprésent ni refactoring, le contact avec le code ne garantit pas un bon modèle."
+   }
+  ],
+  "see": [
+   [
+    "model-driven-design",
+    "Model-Driven Design"
+   ],
+   [
+    "ubiquitous-language",
+    "Ubiquitous Language"
+   ]
+  ]
  },
  {
   "id": "refactoring-toward-deeper-insight",
@@ -1561,7 +2256,40 @@
      "l": "collaborent"
     }
    ]
-  }
+  },
+  "page": 8,
+  "summary": "Refactore par intuition du domaine, pas seulement pour des raisons techniques, pour affiner le modèle.",
+  "pShort": "Comment aller au-delà de briques saines pour trouver un modèle vraiment incisif ?",
+  "sShort": "Refactorer itérativement le modèle et son expression dans le code, avec les experts métier et des développeurs curieux du domaine.",
+  "tags": [
+   "#Refactoring",
+   "#Insight",
+   "#Itération"
+  ],
+  "neg": [
+   {
+    "t": "Résultat incertain",
+    "d": "Un insight plus profond n'arrive pas à la demande ; le temps investi ne garantit pas toujours une percée."
+   },
+   {
+    "t": "Risque de sur-ingénierie",
+    "d": "Chercher sans cesse un modèle plus profond peut retarder la livraison si ce n'est pas cadré."
+   }
+  ],
+  "see": [
+   [
+    "conceptual-contours",
+    "Conceptual Contours"
+   ],
+   [
+    "hands-on-modelers",
+    "Hands-on Modelers"
+   ],
+   [
+    "model-driven-design",
+    "Model-Driven Design"
+   ]
+  ]
  },
  {
   "id": "layered-architecture",
@@ -1632,7 +2360,40 @@
      "d": 1
     }
    ]
-  }
+  },
+  "page": 10,
+  "summary": "Isole la logique du domaine de l'interface, de l'application et de l'infrastructure.",
+  "pShort": "Comment éviter que la logique métier se dilue dans le code d'interface, de base de données et de support ?",
+  "sShort": "Partitionner le programme en couches cohésives et concentrer le code du modèle dans une seule couche isolée.",
+  "tags": [
+   "#Architecture",
+   "#Isolation",
+   "#Hexagonale"
+  ],
+  "neg": [
+   {
+    "t": "Couches superflues",
+    "d": "Empiler des couches sans besoin réel ajoute de l'indirection et du code de câblage sans bénéfice."
+   },
+   {
+    "t": "Fuites de dépendances",
+    "d": "Sans discipline, l'infrastructure ou l'UI finissent par s'infiltrer dans le domaine via des raccourcis."
+   }
+  ],
+  "see": [
+   [
+    "services",
+    "Services"
+   ],
+   [
+    "repository",
+    "Repository"
+   ],
+   [
+    "model-driven-design",
+    "Model-Driven Design"
+   ]
+  ]
  },
  {
   "id": "services",
@@ -1688,7 +2449,35 @@
      "l": "crédite"
     }
    ]
-  }
+  },
+  "page": 14,
+  "summary": "Modélise comme service autonome un processus du domaine qui ne relève ni d'une entité ni d'un value object.",
+  "pShort": "Comment éviter de forcer un concept du domaine dans un objet auquel il n'appartient pas naturellement ?",
+  "sShort": "Déclarer l'opération comme interface autonome, nommée dans le langage omniprésent, avec un contrat explicite.",
+  "tags": [
+   "#Processus",
+   "#Sans état"
+  ],
+  "neg": [
+   {
+    "t": "Anémie du modèle",
+    "d": "Trop de logique déplacée vers des services peut vider les entités et value objects de leur comportement, un anti-pattern classique."
+   },
+   {
+    "t": "Nommage flou",
+    "d": "Un service mal nommé ou trop large (ex. « Manager », « Helper ») redevient un fourre-tout technique."
+   }
+  ],
+  "see": [
+   [
+    "layered-architecture",
+    "Layered Architecture"
+   ],
+   [
+    "intention-revealing-interfaces",
+    "Intention-Revealing Interfaces"
+   ]
+  ]
  },
  {
   "id": "modules",
@@ -1763,7 +2552,35 @@
      "d": 1
     }
    ]
-  }
+  },
+  "page": 15,
+  "summary": "Découpe le système en modules qui racontent l'histoire du domaine, pas seulement le code.",
+  "pShort": "Comment éviter des fragments de code incohérents, aussi durs à comprendre qu'une soupe indifférenciée ?",
+  "sShort": "Choisir des modules à faible couplage conceptuel, avec des noms qui entrent dans le langage omniprésent.",
+  "tags": [
+   "#Organisation du code",
+   "#Couplage faible"
+  ],
+  "neg": [
+   {
+    "t": "Modules hérités",
+    "d": "Garder le découpage initial du projet sans le revoir laisse les modules diverger du modèle réel."
+   },
+   {
+    "t": "Fausse cohésion technique",
+    "d": "Grouper par type technique (tous les contrôleurs, tous les DAO) plutôt que par concept du domaine reproduit le problème que le pattern veut éviter."
+   }
+  ],
+  "see": [
+   [
+    "conceptual-contours",
+    "Conceptual Contours"
+   ],
+   [
+    "bounded-context",
+    "Bounded Context"
+   ]
+  ]
  },
  {
   "id": "factories",
@@ -1821,7 +2638,35 @@
      "l": "crée d’un bloc"
     }
    ]
-  }
+  },
+  "page": 18,
+  "summary": "Confie la création d'aggregates ou de value objects complexes à un objet séparé, invariants garantis.",
+  "pShort": "Comment éviter que la construction d'un aggregate cohérent expose trop de détails internes au client ?",
+  "sShort": "Encapsuler tout l'assemblage dans un objet séparé qui crée l'aggregate d'un bloc, sans exposer les classes concrètes au client.",
+  "tags": [
+   "#Création",
+   "#Encapsulation"
+  ],
+  "neg": [
+   {
+    "t": "Indirection supplémentaire",
+    "d": "Une factory ajoute une classe et un niveau d'appel pour des créations parfois déjà simples."
+   },
+   {
+    "t": "Risque de sur-ingénierie",
+    "d": "Systématiser les factories même pour des objets triviaux alourdit le code sans bénéfice réel."
+   }
+  ],
+  "see": [
+   [
+    "aggregate",
+    "Aggregate"
+   ],
+   [
+    "repository",
+    "Repository"
+   ]
+  ]
  },
  {
   "id": "intention-revealing-interfaces",
@@ -1878,7 +2723,40 @@
      "d": 1
     }
    ]
-  }
+  },
+  "page": 20,
+  "summary": "Nomme classes et opérations d'après leur effet et leur but, jamais d'après leur implémentation.",
+  "pShort": "Comment éviter qu'un développeur doive lire l'implémentation pour comprendre à quoi sert une opération ?",
+  "sShort": "Nommer en conformité avec le langage omniprésent, et écrire le test avant le comportement pour se mettre à la place du client.",
+  "tags": [
+   "#Nommage",
+   "#Encapsulation",
+   "#Lisibilité"
+  ],
+  "neg": [
+   {
+    "t": "Discipline continue",
+    "d": "Le nommage se dégrade vite si l'équipe ne le retravaille pas à chaque renommage du langage omniprésent."
+   },
+   {
+    "t": "Pas de garantie de comportement",
+    "d": "Un bon nom ne garantit pas à lui seul l'absence d'effets de bord ; il se combine avec les Assertions."
+   }
+  ],
+  "see": [
+   [
+    "side-effect-free-functions",
+    "Side-Effect-Free Functions"
+   ],
+   [
+    "assertions",
+    "Assertions"
+   ],
+   [
+    "ubiquitous-language",
+    "Ubiquitous Language"
+   ]
+  ]
  },
  {
   "id": "side-effect-free-functions",
@@ -1944,7 +2822,39 @@
      "l": "modifie"
     }
    ]
-  }
+  },
+  "page": 21,
+  "summary": "Isole les calculs complexes dans des fonctions sans effet de bord, séparées des commandes qui modifient l'état.",
+  "pShort": "Comment prévoir le résultat d'une composition de règles sans devoir tracer toute son implémentation ?",
+  "sShort": "Maximiser la logique dans des fonctions qui renvoient un résultat sans effet observable ; isoler à part les commandes, très simples.",
+  "tags": [
+   "#Fonctions pures",
+   "#Prévisibilité"
+  ],
+  "neg": [
+   {
+    "t": "Pas toujours applicable",
+    "d": "Certaines opérations du domaine sont par nature des commandes avec effet ; les forcer en fonctions pures dénature le modèle."
+   },
+   {
+    "t": "Volume de code accru",
+    "d": "Séparer strictement requêtes et commandes peut multiplier les petites méthodes."
+   }
+  ],
+  "see": [
+   [
+    "value-object",
+    "Value Object"
+   ],
+   [
+    "closure-of-operations",
+    "Closure of Operations"
+   ],
+   [
+    "assertions",
+    "Assertions"
+   ]
+  ]
  },
  {
   "id": "assertions",
@@ -2016,7 +2926,36 @@
      "b": "t"
     }
    ]
-  }
+  },
+  "page": 22,
+  "summary": "Énonce explicitement les post-conditions des opérations et les invariants des aggregates.",
+  "pShort": "Comment éviter que les effets de bord ne soient définis qu'implicitement, au prix d'un enchevêtrement à tracer ?",
+  "sShort": "Documenter ou tester les post-conditions et invariants, dans le code si le langage le permet, sinon en tests ou en documentation.",
+  "tags": [
+   "#Contrats",
+   "#Invariants",
+   "#Tests"
+  ],
+  "neg": [
+   {
+    "t": "Sans support natif",
+    "d": "Beaucoup de langages n'expriment pas nativement les assertions, qui retombent alors sur la documentation ou les tests, moins fiables."
+   },
+   {
+    "t": "Maintenance des contrats",
+    "d": "Des assertions non tenues à jour avec le code deviennent trompeuses plutôt qu'utiles."
+   }
+  ],
+  "see": [
+   [
+    "intention-revealing-interfaces",
+    "Intention-Revealing Interfaces"
+   ],
+   [
+    "aggregate",
+    "Aggregate"
+   ]
+  ]
  },
  {
   "id": "standalone-classes",
@@ -2098,7 +3037,35 @@
      "b": "a"
     }
    ]
-  }
+  },
+  "page": 23,
+  "summary": "Élimine toute dépendance d'une classe pour la rendre compréhensible seule.",
+  "pShort": "Comment limiter la charge mentale d'une conception dont les dépendances, explicites ou implicites, s'accumulent ?",
+  "sShort": "Pousser le faible couplage jusqu'au bout, en éliminant tous les autres concepts dont dépend la classe quand c'est possible.",
+  "tags": [
+   "#Couplage faible",
+   "#Simplicité"
+  ],
+  "neg": [
+   {
+    "t": "Applicable à une minorité de classes",
+    "d": "La plupart des objets du domaine ont des relations légitimes ; forcer l'autonomie partout peut appauvrir le modèle."
+   },
+   {
+    "t": "Faux sentiment d'isolement",
+    "d": "Une classe sans dépendance de code peut rester couplée conceptuellement à d'autres notions du domaine."
+   }
+  ],
+  "see": [
+   [
+    "conceptual-contours",
+    "Conceptual Contours"
+   ],
+   [
+    "closure-of-operations",
+    "Closure of Operations"
+   ]
+  ]
  },
  {
   "id": "closure-of-operations",
@@ -2166,7 +3133,35 @@
      "b": "r"
     }
    ]
-  }
+  },
+  "page": 24,
+  "summary": "Définit des opérations dont le type de retour reste celui des arguments, fermées sur le type.",
+  "pShort": "Comment obtenir une interface de haut niveau qui ne dépende d'aucun autre concept ?",
+  "sShort": "Là où c'est adapté, typer une opération pour qu'elle retourne un résultat du même type que ses arguments, surtout dans les value objects.",
+  "tags": [
+   "#Value Object",
+   "#Composabilité"
+  ],
+  "neg": [
+   {
+    "t": "Champ d'application restreint",
+    "d": "La fermeture n'a de sens que pour certaines opérations mathématiques ou combinables ; l'imposer ailleurs est artificiel."
+   },
+   {
+    "t": "Peut masquer un besoin de nouveau concept",
+    "d": "Forcer la fermeture peut éviter d'introduire un concept du domaine qui aurait été plus parlant."
+   }
+  ],
+  "see": [
+   [
+    "value-object",
+    "Value Object"
+   ],
+   [
+    "side-effect-free-functions",
+    "Side-Effect-Free Functions"
+   ]
+  ]
  },
  {
   "id": "declarative-design",
@@ -2223,7 +3218,35 @@
      "b": "c"
     }
    ]
-  }
+  },
+  "page": 25,
+  "summary": "Pilote tout ou partie du programme par une spécification exécutable plutôt que du code procédural.",
+  "pShort": "Comment obtenir une vraie garantie sur le comportement, plutôt que du code répétitif aux effets de bord non exclus ?",
+  "sShort": "Décrire précisément des propriétés qui pilotent le logiciel par réflexion ou génération de code, avec des éléments combinables qui communiquent leur sens.",
+  "tags": [
+   "#Spécification",
+   "#Génération de code"
+  ],
+  "neg": [
+   {
+    "t": "Coût d'outillage",
+    "d": "Construire ou adopter un framework déclaratif demande un investissement initial important."
+   },
+   {
+    "t": "Risque de contournement",
+    "d": "Si le système déclaratif est trop restrictif, les développeurs le contournent, ce qui annule la garantie recherchée."
+   }
+  ],
+  "see": [
+   [
+    "cohesive-mechanisms",
+    "Cohesive Mechanisms"
+   ],
+   [
+    "assertions",
+    "Assertions"
+   ]
+  ]
  },
  {
   "id": "drawing-on-established-formalisms",
@@ -2294,7 +3317,35 @@
      "b": "s"
     }
    ]
-  }
+  },
+  "page": 26,
+  "summary": "Réutilise des systèmes conceptuels établis (comptabilité, mathématiques) plutôt que d'en inventer un.",
+  "pShort": "Comment bâtir un cadre conceptuel solide sans repartir de zéro à chaque fois ?",
+  "sShort": "Adapter au domaine un formalisme déjà éprouvé, parfois affiné pendant des siècles, pour un modèle profond et une conception souple.",
+  "tags": [
+   "#Formalisme",
+   "#Réutilisation"
+  ],
+  "neg": [
+   {
+    "t": "Formalisme rare pour le domaine",
+    "d": "Tous les domaines n'ont pas de formalisme établi à emprunter ; la recherche peut ne rien donner."
+   },
+   {
+    "t": "Risque de sur-adaptation",
+    "d": "Plaquer un formalisme externe qui ne correspond pas vraiment au domaine peut le déformer plutôt que l'éclairer."
+   }
+  ],
+  "see": [
+   [
+    "conceptual-contours",
+    "Conceptual Contours"
+   ],
+   [
+    "cohesive-mechanisms",
+    "Cohesive Mechanisms"
+   ]
+  ]
  },
  {
   "id": "conceptual-contours",
@@ -2363,7 +3414,39 @@
      "b": "u2"
     }
    ]
-  }
+  },
+  "page": 27,
+  "summary": "Décompose le modèle selon ses divisions naturelles, guidé par les axes de changement et de stabilité.",
+  "pShort": "Comment choisir la bonne granularité, ni trop fine ni trop grossière, pour ne pas perdre le sens d'un concept ?",
+  "sShort": "Observer au fil des refactorings les axes de changement et de stabilité, et aligner le découpage sur les contours conceptuels du domaine.",
+  "tags": [
+   "#Granularité",
+   "#Refactoring"
+  ],
+  "neg": [
+   {
+    "t": "Se révèle par l'usage",
+    "d": "Les bons contours ne sont souvent visibles qu'après plusieurs itérations, pas dès la conception initiale."
+   },
+   {
+    "t": "Subjectivité",
+    "d": "L'intuition des divisions importantes du domaine varie selon les personnes et peut faire débat dans l'équipe."
+   }
+  ],
+  "see": [
+   [
+    "modules",
+    "Modules"
+   ],
+   [
+    "standalone-classes",
+    "Standalone Classes"
+   ],
+   [
+    "refactoring-toward-deeper-insight",
+    "Refactoring Toward Deeper Insight"
+   ]
+  ]
  },
  {
   "id": "generic-subdomains",
@@ -2421,7 +3504,35 @@
      "d": 1
     }
    ]
-  }
+  },
+  "page": 41,
+  "summary": "Isole dans des modules à part les sous-domaines qui ne motivent pas le projet mais restent nécessaires.",
+  "pShort": "Comment discerner le core domain quand des parties complexes mais non spécialisées le noient ?",
+  "sShort": "Factoriser les sous-domaines génériques dans des modules séparés, sans y affecter les développeurs du cœur, en envisageant des solutions sur étagère.",
+  "tags": [
+   "#Priorisation",
+   "#Distillation"
+  ],
+  "neg": [
+   {
+    "t": "Solution sur étagère parfois absente",
+    "d": "Tous les sous-domaines génériques n'ont pas d'équivalent standard disponible sur le marché."
+   },
+   {
+    "t": "Frontière avec le cœur à surveiller",
+    "d": "Un sous-domaine générique mal isolé peut recevoir des spécificités du projet et perdre son caractère générique."
+   }
+  ],
+  "see": [
+   [
+    "core-domain",
+    "Core Domain"
+   ],
+   [
+    "segregated-core",
+    "Segregated Core"
+   ]
+  ]
  },
  {
   "id": "domain-vision-statement",
@@ -2477,7 +3588,39 @@
      "l": "fédère"
     }
    ]
-  }
+  },
+  "page": 42,
+  "summary": "Rédige une courte description du core domain et de sa proposition de valeur, révisée au fil du projet.",
+  "pShort": "Comment focaliser le développement du modèle avant même qu'il n'existe, ou expliquer sa valeur sans étude approfondie ?",
+  "sShort": "Écrire environ une page sur le core domain et sa valeur, en ignorant ce qui ne le distingue pas des autres, et la réviser régulièrement.",
+  "tags": [
+   "#Vision",
+   "#Alignement"
+  ],
+  "neg": [
+   {
+    "t": "Vite datée",
+    "d": "Sans révision régulière, la vision cesse de refléter le projet et perd sa fonction d'alignement."
+   },
+   {
+    "t": "Reste abstraite",
+    "d": "Une page ne peut pas remplacer les échanges nécessaires pour ancrer la vision dans les décisions quotidiennes."
+   }
+  ],
+  "see": [
+   [
+    "core-domain",
+    "Core Domain"
+   ],
+   [
+    "highlighted-core",
+    "Highlighted Core"
+   ]
+  ],
+  "crew": [
+   "Core Domain Charts",
+   "https://github.com/ddd-crew/core-domain-charts"
+  ]
  },
  {
   "id": "highlighted-core",
@@ -2534,7 +3677,39 @@
      "l": "signale"
     }
    ]
-  }
+  },
+  "page": 43,
+  "summary": "Rend le core domain visible par un document bref et/ou le marquage des éléments du cœur dans le dépôt.",
+  "pShort": "Comment éviter qu'une vision générale du domaine laisse chacun interpréter différemment ce qui compte vraiment ?",
+  "sShort": "Rédiger 3 à 7 pages clairsemées décrivant le core domain et ses interactions clés, et/ou marquer les éléments du cœur dans le modèle.",
+  "tags": [
+   "#Visibilité",
+   "#Documentation légère"
+  ],
+  "neg": [
+   {
+    "t": "Maintenance du document",
+    "d": "Le document de distillation doit être révisé à chaque changement significatif, sous peine de devenir trompeur."
+   },
+   {
+    "t": "Marquage à faire respecter",
+    "d": "Le marquage dans le dépôt n'a de valeur que si l'équipe l'entretient au fil des évolutions du code."
+   }
+  ],
+  "see": [
+   [
+    "domain-vision-statement",
+    "Domain Vision Statement"
+   ],
+   [
+    "segregated-core",
+    "Segregated Core"
+   ]
+  ],
+  "crew": [
+   "Core Domain Charts",
+   "https://github.com/ddd-crew/core-domain-charts"
+  ]
  },
  {
   "id": "cohesive-mechanisms",
@@ -2591,7 +3766,35 @@
      "b": "m"
     }
    ]
-  }
+  },
+  "page": 44,
+  "summary": "Extrait un mécanisme algorithmique cohésif dans un framework léger séparé, pour libérer le domaine du « comment ».",
+  "pShort": "Comment éviter que des calculs complexes noient le sens du modèle sous leur mécanique interne ?",
+  "sShort": "Extraire le mécanisme dans un framework léger, exposé par une interface qui révèle l'intention, le domaine se limitant au « quoi ».",
+  "tags": [
+   "#Algorithme",
+   "#Séparation des préoccupations"
+  ],
+  "neg": [
+   {
+    "t": "Coût d'extraction",
+    "d": "Isoler proprement un mécanisme cohésif demande un effort de conception qui peut ne pas être rentable pour un cas isolé."
+   },
+   {
+    "t": "Frontière à bien poser",
+    "d": "Un découpage flou entre le « quoi » et le « comment » peut recréer le mélange que le pattern cherche à éviter."
+   }
+  ],
+  "see": [
+   [
+    "declarative-design",
+    "Declarative Design"
+   ],
+   [
+    "drawing-on-established-formalisms",
+    "Drawing on Established Formalisms"
+   ]
+  ]
  },
  {
   "id": "segregated-core",
@@ -2661,7 +3864,39 @@
      "d": 1
     }
    ]
-  }
+  },
+  "page": 45,
+  "summary": "Sépare les concepts du cœur des éléments génériques ou de soutien, quitte à séparer des éléments couplés.",
+  "pShort": "Comment éviter que des éléments centraux couplés à des éléments génériques n'étouffent le cœur du modèle ?",
+  "sShort": "Refactorer pour renforcer la cohésion du cœur et réduire son couplage, en plaçant tout le reste dans d'autres packages.",
+  "tags": [
+   "#Refactoring",
+   "#Cohésion"
+  ],
+  "neg": [
+   {
+    "t": "Refactoring coûteux",
+    "d": "Séparer des éléments fortement couplés au départ demande un effort de refactoring parfois important."
+   },
+   {
+    "t": "Rupture temporaire",
+    "d": "La période de transition peut fragiliser le code avant que la nouvelle séparation ne soit stabilisée."
+   }
+  ],
+  "see": [
+   [
+    "core-domain",
+    "Core Domain"
+   ],
+   [
+    "abstract-core",
+    "Abstract Core"
+   ],
+   [
+    "generic-subdomains",
+    "Generic Subdomains"
+   ]
+  ]
  },
  {
   "id": "abstract-core",
@@ -2717,7 +3952,35 @@
      "l": "implémente"
     }
    ]
-  }
+  },
+  "page": 46,
+  "summary": "Factorise les concepts différenciants les plus fondamentaux dans un module abstrait séparé.",
+  "pShort": "Comment garder une vue d'ensemble compréhensible quand des sous-domaines interagissent beaucoup entre eux ?",
+  "sShort": "Extraire les interactions essentielles en classes ou interfaces abstraites, dans leur propre module, les détails restant par sous-domaine.",
+  "tags": [
+   "#Abstraction",
+   "#Interactions"
+  ],
+  "neg": [
+   {
+    "t": "Abstraction prématurée",
+    "d": "Extraire un cœur abstrait trop tôt, avant de bien connaître les variations réelles, peut mener à une mauvaise abstraction."
+   },
+   {
+    "t": "Compréhension exigeante",
+    "d": "Un module abstrait bien conçu demande aux développeurs de raisonner à un niveau plus général, ce qui peut dérouter au début."
+   }
+  ],
+  "see": [
+   [
+    "segregated-core",
+    "Segregated Core"
+   ],
+   [
+    "pluggable-component-framework",
+    "Pluggable Component Framework"
+   ]
+  ]
  },
  {
   "id": "evolving-order",
@@ -2773,7 +4036,35 @@
      "l": "évolue"
     }
    ]
-  }
+  },
+  "page": 48,
+  "summary": "Laisse la structure à grande échelle évoluer avec l'application, sans la sur-contraindre à l'avance.",
+  "pShort": "Comment éviter qu'une architecture imposée d'avance ne corsète le projet et ne retire du pouvoir aux concepteurs des parties ?",
+  "sShort": "N'appliquer une structure que si elle clarifie fortement le système, en cherchant un ensemble minimal, quitte à en changer le type.",
+  "tags": [
+   "#Architecture émergente",
+   "#Minimalisme"
+  ],
+  "neg": [
+   {
+    "t": "Absence de repère au départ",
+    "d": "Ne pas fixer de structure dès le début peut désorienter une équipe habituée à un cadre plus prescriptif."
+   },
+   {
+    "t": "Changement de structure coûteux",
+    "d": "Passer d'un type de structure à un autre en cours de route demande un effort de migration réel."
+   }
+  ],
+  "see": [
+   [
+    "responsibility-layers",
+    "Responsibility Layers"
+   ],
+   [
+    "system-metaphor",
+    "System Metaphor"
+   ]
+  ]
  },
  {
   "id": "system-metaphor",
@@ -2829,7 +4120,35 @@
      "l": "guide"
     }
    ]
-  }
+  },
+  "page": 49,
+  "summary": "Adopte une analogie concrète qui capte l'imagination de l'équipe pour orienter la conception à grande échelle.",
+  "pShort": "Comment donner à l'équipe et aux utilisateurs un moyen tangible de comprendre un système abstrait ?",
+  "sShort": "Organiser la conception autour d'une métaphore concrète et l'absorber dans le langage omniprésent, prêt à l'abandonner si elle gêne.",
+  "tags": [
+   "#Métaphore",
+   "#Langage commun"
+  ],
+  "neg": [
+   {
+    "t": "Métaphore trompeuse",
+    "d": "Toute métaphore est inexacte ; forcée au-delà de sa pertinence, elle égare la conception plutôt que de l'éclairer."
+   },
+   {
+    "t": "Difficile à faire adopter",
+    "d": "Une métaphore ne s'impose pas ; si elle ne capte pas vraiment l'équipe, elle reste un slogan sans effet réel."
+   }
+  ],
+  "see": [
+   [
+    "ubiquitous-language",
+    "Ubiquitous Language"
+   ],
+   [
+    "evolving-order",
+    "Evolving Order"
+   ]
+  ]
  },
  {
   "id": "responsibility-layers",
@@ -2886,7 +4205,35 @@
      "l": "dépend de"
     }
    ]
-  }
+  },
+  "page": 50,
+  "summary": "Exprime de larges responsabilités abstraites en strates, quand des rythmes de changement naturels apparaissent.",
+  "pShort": "Comment attribuer les responsabilités à grande échelle sans que ce soit fait à la main, sans ligne directrice ni uniformité ?",
+  "sShort": "Examiner dépendances conceptuelles et rythmes de changement, exprimer les strates naturelles, puis refactorer pour qu'un objet appartienne à une seule couche.",
+  "tags": [
+   "#Strates",
+   "#Responsabilités"
+  ],
+  "neg": [
+   {
+    "t": "Strates artificielles",
+    "d": "Imposer des couches là où le domaine ne présente pas de rythmes de changement naturels crée une structure sans fondement réel."
+   },
+   {
+    "t": "Refactoring transverse",
+    "d": "Faire rentrer chaque objet existant dans une seule couche peut demander un refactoring important sur tout le modèle."
+   }
+  ],
+  "see": [
+   [
+    "evolving-order",
+    "Evolving Order"
+   ],
+   [
+    "knowledge-level",
+    "Knowledge Level"
+   ]
+  ]
  },
  {
   "id": "knowledge-level",
@@ -2929,7 +4276,35 @@
      "l": "décrit et contraint"
     }
    ]
-  }
+  },
+  "page": 51,
+  "summary": "Sépare un niveau opérationnel concret d'un niveau de connaissance qui décrit et contraint ses règles.",
+  "pShort": "Comment servir des rôles et relations qui varient selon les situations, sans multiplier les classes aux mêmes données ?",
+  "sShort": "Créer un ensemble distinct d'objets qui décrivent la structure et le comportement du modèle de base, personnalisable par un utilisateur avancé.",
+  "tags": [
+   "#Méta-modèle",
+   "#Personnalisation"
+  ],
+  "neg": [
+   {
+    "t": "Complexité à deux niveaux",
+    "d": "Faire cohabiter un niveau opérationnel et un niveau de connaissance ajoute une couche d'indirection à comprendre pour l'équipe."
+   },
+   {
+    "t": "Sur-généralisation",
+    "d": "Introduire un niveau de connaissance pour un besoin de variation limité peut être disproportionné."
+   }
+  ],
+  "see": [
+   [
+    "responsibility-layers",
+    "Responsibility Layers"
+   ],
+   [
+    "abstract-core",
+    "Abstract Core"
+   ]
+  ]
  },
  {
   "id": "pluggable-component-framework",
@@ -3011,6 +4386,35 @@
      "b": "k"
     }
    ]
-  }
+  },
+  "page": 52,
+  "summary": "Distille un cœur abstrait d'interfaces pour permettre à des composants indépendants d'interopérer librement.",
+  "pShort": "Comment faire interopérer des applications conçues indépendamment sur les mêmes abstractions, quand un Shared Kernel n'est pas réaliste ?",
+  "sShort": "Créer un framework autour d'un cœur abstrait d'interfaces et d'interactions, où toute application substitue librement ses implémentations.",
+  "tags": [
+   "#Framework",
+   "#Interopérabilité",
+   "#Interfaces"
+  ],
+  "neg": [
+   {
+    "t": "Maturité requise",
+    "d": "Ce pattern suppose un modèle très mûr et des abstractions déjà stabilisées ; l'appliquer trop tôt échoue souvent."
+   },
+   {
+    "t": "Coût de gouvernance",
+    "d": "Faire évoluer le cœur abstrait sans casser les composants existants demande une gouvernance inter-équipes exigeante."
+   }
+  ],
+  "see": [
+   [
+    "abstract-core",
+    "Abstract Core"
+   ],
+   [
+    "shared-kernel",
+    "Shared Kernel"
+   ]
+  ]
  }
 ]
